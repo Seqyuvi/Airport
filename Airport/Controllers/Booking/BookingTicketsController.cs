@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Airport.Controllers.Booking
 {
@@ -18,17 +19,33 @@ namespace Airport.Controllers.Booking
 
         public bool TicketPlusBooking(int idTicketSelling)
         {
-            var lastBookingTicket = _bookingTicketsRepository.GetAll().Last();
-            _bookingTicketsRepository.Create
-                (
-                    new Models.BookingTickets
-                    {
-                        IdBookingTicket = lastBookingTicket.IdBookingTicket + 1,
-                        IdBooking = BookingMiodelHelper.IdBooking,
-                        IdTicketSelling = idTicketSelling,
-                    }
-                );
-            return true;
+            try
+            {
+                var lastBookingTicket = _bookingTicketsRepository.GetAll().Last();
+                var result = _bookingTicketsRepository.Create
+                    (
+                        new Models.BookingTickets
+                        {
+                            IdBookingTicket = lastBookingTicket.IdBookingTicket + 1,
+                            IdBooking = BookingMiodelHelper.IdBooking,
+                            IdTicketSelling = idTicketSelling,
+                        }
+                    );
+                if (result) return true; else return false;
+                
+            }
+            catch (Exception ex)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    MessageBox.Show(
+                        messageBoxText: $"Ошибка создания бронирования: {ex.Message}",
+                        caption: "Ошибка",
+                        button: MessageBoxButton.OK,
+                        icon: MessageBoxImage.Error);
+                });
+            }
+            
 
         }
     }

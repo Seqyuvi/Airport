@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Airport.Controllers.Booking
 {
@@ -19,34 +20,68 @@ namespace Airport.Controllers.Booking
 
         public bool CreateBooking()
         {
-            var lastBooking = _bookingRepository.GetAll()
-                .Last();
-
-            var bookingNew = new Bookings
+            try
             {
-                IdBooking = lastBooking.IdBooking + 1,
-                BookingCode = GenerateBookingCode(lastBooking.BookingCode),
-                BookingDate = DateTime.Now,
-                TotalPrice = 0,
-                IdBookingStatus = 1
-            };
+                var lastBooking = _bookingRepository.GetAll()
+               .Last();
 
-            _bookingRepository.Create(bookingNew);
-            BookingMiodelHelper.IdBooking = bookingNew.IdBooking;
-            BookingMiodelHelper.BookingCode = bookingNew.BookingCode;
-            BookingMiodelHelper.BookingDate = bookingNew.BookingDate;
-            BookingMiodelHelper.TotalPrice = bookingNew.TotalPrice;
-            BookingMiodelHelper.IdBookingStatus = bookingNew.IdBookingStatus;
-            return true;
+                var bookingNew = new Bookings
+                {
+                    IdBooking = lastBooking.IdBooking + 1,
+                    BookingCode = GenerateBookingCode(lastBooking.BookingCode),
+                    BookingDate = DateTime.Now,
+                    TotalPrice = 0,
+                    IdBookingStatus = 1
+                };
+
+                var result = _bookingRepository.Create(bookingNew);
+                BookingMiodelHelper.IdBooking = bookingNew.IdBooking;
+                BookingMiodelHelper.BookingCode = bookingNew.BookingCode;
+                BookingMiodelHelper.BookingDate = bookingNew.BookingDate;
+                BookingMiodelHelper.TotalPrice = bookingNew.TotalPrice;
+                BookingMiodelHelper.IdBookingStatus = bookingNew.IdBookingStatus;
+                if (result) return true; else return false;
+               
+               
+            }
+            catch (Exception ex)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    MessageBox.Show(
+                        messageBoxText: $"Ошибка создания бронирования: {ex.Message}",
+                        caption: "Ошибка",
+                        button: MessageBoxButton.OK,
+                        icon: MessageBoxImage.Error);
+                });
+                return false;
+            }
+           
         }
 
 
         private string GenerateBookingCode(string bookingCode)
         {
-            int number = int.Parse(bookingCode.Substring(2));
-            number += 1;
-            string newCode = "BK" + number.ToString("D8");
-            return newCode;
+            try
+            {
+                int number = int.Parse(bookingCode.Substring(2));
+                number += 1;
+                string newCode = "BK" + number.ToString("D8");
+                return newCode;
+            }
+            catch (Exception ex)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    MessageBox.Show(
+                        messageBoxText: $"Ошибка создания бронирования: {ex.Message}",
+                        caption: "Ошибка",
+                        button: MessageBoxButton.OK,
+                        icon: MessageBoxImage.Error);
+                });
+                return string.Empty;
+            }
+            
         }
     }
 }

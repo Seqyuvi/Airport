@@ -17,6 +17,7 @@ namespace Airport.Controllers.Ticket
         public List<Models.TicketsSelling> FindPassanger(int type, string info)
         {
             return _ticketSellingRepository.FindPassanger(type, info);
+           
         }
     }
 }

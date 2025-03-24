@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Airport.Controllers.Ticket
 {
@@ -22,28 +23,44 @@ namespace Airport.Controllers.Ticket
         public bool TicketBuy(int idFlight, int numberTicket, string passportNumber, string placeOfIssue, DateTime dateOfIssue,
             string firstName, string secondName, string surName, DateTime dateOfBirth, int formOfPayment, string email)
         {
-            var lastTicket = _ticketSellingRepository.GetAll().Last();
-            _ticketSellingRepository.Create
-                (
-                    new Models.TicketsSelling
-                    {
-                        IdFlight = idFlight,
-                        NumberTicket = lastTicket.NumberTicket + 1,
-                        PassportNumber = passportNumber,
-                        PlaceOfIssue = placeOfIssue,
-                        DateOfIssue = dateOfIssue,
-                        FirstName = firstName,
-                        SecondName = secondName,
-                        Surname = surName,
-                        DateOfBirth = dateOfBirth,
-                        BagageCount = 2,
-                        FormOfPaymentId = formOfPayment,
-                        Email = email
+            try
+            {
+                var lastTicket = _ticketSellingRepository.GetAll().Last();
+                _ticketSellingRepository.Create
+                    (
+                        new Models.TicketsSelling
+                        {
+                            IdFlight = idFlight,
+                            NumberTicket = lastTicket.NumberTicket + 1,
+                            PassportNumber = passportNumber,
+                            PlaceOfIssue = placeOfIssue,
+                            DateOfIssue = dateOfIssue,
+                            FirstName = firstName,
+                            SecondName = secondName,
+                            Surname = surName,
+                            DateOfBirth = dateOfBirth,
+                            BagageCount = 2,
+                            FormOfPaymentId = formOfPayment,
+                            Email = email
 
-                    }
-                );
-            _bookingTicketsController.TicketPlusBooking(lastTicket.NumberTicket + 1);
-            return true;
+                        }
+                    );
+                var result = _bookingTicketsController.TicketPlusBooking(lastTicket.NumberTicket + 1);
+                if (result) return true; else return false;
+
+            }
+            catch ( Exception ex )
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    MessageBox.Show(
+                        messageBoxText: $"Ошибка покупки билета: {ex.Message}",
+                        caption: "Ошибка",
+                        button: MessageBoxButton.OK,
+                        icon: MessageBoxImage.Error);
+                });
+                throw new Exception($"Ошибка покупки билета:{ex.Message}");
+            }
         }
 
 

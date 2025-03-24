@@ -2,6 +2,7 @@
 using Airport.validation.GeneralValid;
 using System;
 using System.Linq;
+using System.Windows;
 
 namespace Airport.Controllers
 {
@@ -22,23 +23,39 @@ namespace Airport.Controllers
         /// <exception cref="NotImplementedException"></exception>
         public bool Authorization(string login, string password)
         {
-            var user = _usersRepository.GetAll();
-            bool valid = GeneralValidation.IsStringNullOrEmpty(login) && GeneralValidation.IsStringNullOrEmpty(login) ? true : false;
-            if (valid == true)
+            try
             {
-                var result = user.FirstOrDefault(x => x.Login == login && x.Password == password);
-                if (result != null)
+                var user = _usersRepository.GetAll();
+                bool valid = GeneralValidation.IsStringNullOrEmpty(login) && GeneralValidation.IsStringNullOrEmpty(login) ? true : false;
+                if (valid == true)
                 {
-                    return true;
+                    var result = user.FirstOrDefault(x => x.Login == login && x.Password == password);
+                    if (result != null)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 else
                 {
                     return false;
                 }
+
             }
-            else
+            catch (Exception ex)
             {
-                return false;
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    MessageBox.Show(
+                        messageBoxText: $"Ошибка входа: {ex.Message}",
+                        caption: "Ошибка",
+                        button: MessageBoxButton.OK,
+                        icon: MessageBoxImage.Error);
+                });
+                throw new Exception($"Ошибка входа:{ex.Message}");
             }
         }
     }
