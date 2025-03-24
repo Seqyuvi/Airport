@@ -1,0 +1,68 @@
+﻿<Page x:Class="Airport.View.Pages.Flights.AddFlightsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Airport.View.Pages.Flights"
+      mc:Ignorable="d" 
+      d:DesignHeight="940" d:DesignWidth="1930"
+      Title="AddFlightsPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../../Assets/Resources/DictionaryAddFlight.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="600"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="0" Style="{StaticResource MyWaterMarkStyle}"  x:Name="FlightNumber_TextBox"  Width="585" Height="120" Tag="AAAA-NNN" RenderTransformOrigin="0.5,0.5"/>
+                <ComboBox Grid.Row="1" Style="{StaticResource StyledComboBox}" Tag="AirLines" x:Name="AirLines_ComboBox" Width="585" Height="120" IsTextSearchEnabled="True" IsEditable="True"/>
+                <ComboBox Grid.Row="2" Style="{StaticResource StyledComboBox}" Tag="AirportArrival" x:Name="AirportArrival_ComboBox" Width="585" Height="120" IsTextSearchEnabled="True" IsEditable="True" />
+                <ComboBox Grid.Row="3" Style="{StaticResource StyledComboBox}" Tag="AirportDeparture" x:Name="AirportDeparture_ComboBox" Width="585" Height="120" IsTextSearchEnabled="True" IsEditable="True"/>
+            </Grid>
+            <Grid Grid.Column="1" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <ComboBox Grid.Row="0" Style="{StaticResource StyledComboBox}" Tag="Airplane" x:Name="AirPlane_ComboBox" Width="585" Height="120" IsTextSearchEnabled="True" IsEditable="True"/>
+                <TextBox Grid.Row="1" Style="{StaticResource MyWaterMarkStyle}"  x:Name="TotalSeatsFree_TextBox"  Width="585" Height="120" Tag="TotalSeatsFree" RenderTransformOrigin="0.5,0.5"/>
+                
+            </Grid>
+            <Grid Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <DatePicker Grid.Row="0" Style="{StaticResource StyledDatePicker}" Tag="ArrivalDate" x:Name="ArrivalDate_DataPicker"  Width="585" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <DatePicker Grid.Row="1" Style="{StaticResource StyledDatePicker}" Tag="DepartureDate" x:Name="DepartureDate_DataPicker"  Width="585" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <TextBox Grid.Row="2" Style="{StaticResource MyWaterMarkStyle}"  x:Name="ArrivalTime_TextBox"  Width="585" Height="120" Tag="ArrivalTime(HH:MM)" RenderTransformOrigin="0.5,0.5"/>
+                <TextBox Grid.Row="3" Style="{StaticResource MyWaterMarkStyle}"  x:Name="DepartureTime_TextBox"  Width="585" Height="120" Tag="DepartureTime(HH:MM)" RenderTransformOrigin="0.5,0.5"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" >
+            <Button x:Name="AddFlight_Button" Click="AddFlight_Button_Click"  Width="400" Height="130" Content="Add Flight"/>
+        </Grid>
+    </Grid>
+</Page>
