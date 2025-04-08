@@ -64,9 +64,9 @@ namespace Airport.Controllers.Booking
         {
             try
             {
-                int number = int.Parse(bookingCode.Substring(2));
+                int number = int.Parse(bookingCode.Split('0').Last());
                 number += 1;
-                string newCode = "BK" + number.ToString("D8");
+                string newCode = "BK" + number.ToString($"D{number.ToString().Length}");
                 return newCode;
             }
             catch (Exception ex)

@@ -22,6 +22,11 @@ namespace Airport.Controllers.Flights
             return _flightsRepository.GetAllFlightIncludeAirLine();
         }
 
+        public List<Models.Status> GetAllStatus()
+        {
+            return _flightsRepository.GetAllListStatus();
+        }
+        
 
         public List<FlightViewModel> FiltersOn(int orderBy = 0, string arrivalCity = null, string departureCiry = null, string arrivalAirport = null, string departureAirport = null, string airLine = null, string status = null)
         {

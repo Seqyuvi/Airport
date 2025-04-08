@@ -1,5 +1,6 @@
 ﻿using Airport.View.Pages;
 using Airport.View.Pages.Flights;
+using Airport.View.Pages.Passanger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,16 @@ namespace Airport
         private void AllFlights_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new AllFlightsPage());
+        }
+
+        private void FindFlights_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new FindFlightPage());
+        }
+
+        private void FindPassanger_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new FindPassangerPage());
         }
     }
 }

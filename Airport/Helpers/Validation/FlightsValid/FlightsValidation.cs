@@ -10,7 +10,7 @@ namespace Airport.validation.FlightsValid
     {
         public bool FlightNumberCheck()
         {
-
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -39,10 +38,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -61,17 +60,36 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.7.25104.5739\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.7.25104.5739\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.7.25104.5739\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.7.25104.5739\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.7.25104.5739\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\Airline\AirlineController.cs" />
+    <Compile Include="Controllers\Airplane\AirplaneController.cs" />
     <Compile Include="Controllers\Booking\BookingsController.cs" />
     <Compile Include="Controllers\Booking\BookingTicketsController.cs" />
     <Compile Include="Controllers\Flights\AddFlightController.cs" />
     <Compile Include="Controllers\Flights\AllFlightsController.cs" />
     <Compile Include="Controllers\Flights\FindFlightController.cs" />
+    <Compile Include="Controllers\Flights\MoreInformationFlightController.cs" />
+    <Compile Include="Controllers\Flights\UpdateController\UpdateController.cs" />
     <Compile Include="Controllers\Gates\GatesController.cs" />
     <Compile Include="Controllers\LoginWinController.cs" />
     <Compile Include="Controllers\Registration\RegistrationController.cs" />
@@ -80,6 +98,7 @@
     <Compile Include="Controllers\Ticket\TicketSellingController.cs" />
     <Compile Include="Data\Core.cs" />
     <Compile Include="Helpers\ModelHelper\BookingMiodelHelper.cs" />
+    <Compile Include="Helpers\ModelHelper\UpdateFlightHelper.cs" />
     <Compile Include="Helpers\Validation\FlightsValid\FlightsValidation.cs" />
     <Compile Include="Helpers\Validation\GeneralValid\GeneralValidation.cs" />
     <Compile Include="Helpers\Validation\MailValid\MailValidation.cs" />
@@ -150,6 +169,7 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\Airline\AirlineRepository.cs" />
     <Compile Include="Repositories\AirplaneRepo\AirplaneRepository.cs" />
     <Compile Include="Repositories\AirportRepo\AirportsRepository.cs" />
     <Compile Include="Repositories\Booking\BookingsRepository.cs" />
@@ -164,17 +184,56 @@
     <Compile Include="ViewModel\FlightsViewModel\FlightViewModel.cs" />
     <Compile Include="ViewModel\FlightsViewModel\MoreInformationViewModel.cs" />
     <Compile Include="ViewModel\PassangerViewModel\PassangerListViewModel.cs" />
+    <Compile Include="View\Pages\Filters\FlightFilters.xaml.cs">
+      <DependentUpon>FlightFilters.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\Flights\AddFlightsPage.xaml.cs">
       <DependentUpon>AddFlightsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\Flights\AllFlightsPage.xaml.cs">
       <DependentUpon>AllFlightsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\Flights\FindFlightPage.xaml.cs">
+      <DependentUpon>FindFlightPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Flights\MoreInformationPage.xaml.cs">
+      <DependentUpon>MoreInformationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Flights\UpdateFlights\UpdateAirPage.xaml.cs">
+      <DependentUpon>UpdateAirPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Flights\UpdateFlights\UpdateAirportPage.xaml.cs">
+      <DependentUpon>UpdateAirportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Flights\UpdateFlights\UpdateDataPage.xaml.cs">
+      <DependentUpon>UpdateDataPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Flights\UpdateFlights\UpdateFlightButtonPage.xaml.cs">
+      <DependentUpon>UpdateFlightButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Flights\UpdateFlights\UpdateFlightPage.xaml.cs">
+      <DependentUpon>UpdateFlightPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\Passanger\FindPassangerPage.xaml.cs">
+      <DependentUpon>FindPassangerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Registration\RegistrationPage.xaml.cs">
+      <DependentUpon>RegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\TicketSelling\TicketSellingPage.xaml.cs">
+      <DependentUpon>TicketSellingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\FilterWindow.xaml.cs">
+      <DependentUpon>FilterWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\LoginWin.xaml.cs">
       <DependentUpon>LoginWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\UpdateFlightWindow.xaml.cs">
+      <DependentUpon>UpdateFlightWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Assets\Resources\DictionaryAddFlight.xaml">
       <SubType>Designer</SubType>
@@ -192,6 +251,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Assets\Resources\GeneralDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -204,6 +267,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Pages\Filters\FlightFilters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pages\Flights\AddFlightsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -212,11 +279,59 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Pages\Flights\FindFlightPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Flights\MoreInformationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Flights\UpdateFlights\UpdateAirPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Flights\UpdateFlights\UpdateAirportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Flights\UpdateFlights\UpdateDataPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Flights\UpdateFlights\UpdateFlightButtonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Flights\UpdateFlights\UpdateFlightPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Pages\Passanger\FindPassangerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Registration\RegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\TicketSelling\TicketSellingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\FilterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\LoginWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\UpdateFlightWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -277,12 +392,4 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
-  </Target>
-  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
 </Project>

@@ -26,7 +26,7 @@ namespace Airport.Controllers
             try
             {
                 var user = _usersRepository.GetAll();
-                bool valid = GeneralValidation.IsStringNullOrEmpty(login) && GeneralValidation.IsStringNullOrEmpty(login) ? true : false;
+                bool valid = true;
                 if (valid == true)
                 {
                     var result = user.FirstOrDefault(x => x.Login == login && x.Password == password);

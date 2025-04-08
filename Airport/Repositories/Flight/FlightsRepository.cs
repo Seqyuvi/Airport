@@ -97,10 +97,19 @@ namespace Airport.Repositories.Flight
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public Task<List<Airport.Models.Flights>> GetAll()
+        public List<Airport.Models.Flights> GetAll()
         {
-            throw new NotImplementedException();
+            return _db.context.Flights.ToList();
         }
+
+        public bool UpdateTotalSeatsFree(int id)
+        {
+            var model = GetAll().First(x => x.IdFlight == id);
+            model.TotalSeatsFree -= 1;
+            _db.context.SaveChanges();
+            return true;
+        }
+
 
         /// <summary>
         /// Получение все рейсов с заменой id авиакомпании на её название
@@ -115,6 +124,7 @@ namespace Airport.Repositories.Flight
                 .ToList()
                 .Select(f => new FlightViewModel
                 {
+                    IdFlight = f.IdFlight,
                     FlightNumber = $"{f.FlightNumber}",
                     AirLine = $"{f.Airlines.TitleAirlane}",
                     AirportDeparture = $"{f.Airports.CodeIATA}",
@@ -197,7 +207,7 @@ namespace Airport.Repositories.Flight
         }
 
 
-        public MoreInformationViewModel GetFlightInformation(string FlightNumberIn)
+        public MoreInformationViewModel GetFlightInformation(int id)
         {
 
             var flight = _db.context.Flights
@@ -205,24 +215,33 @@ namespace Airport.Repositories.Flight
                 .Include(i => i.Airports)
                 .Include(i => i.Status)
                 .Include(i => i.Gates)
+                .Include(i => i.Airplane)
                 .ToList()
                 .Select(f => new MoreInformationViewModel
                 {
+                    IdFlight = f.IdFlight,
+
                     FlightNumber = $"{f.FlightNumber}",
-                    AirLine = $"{f.Airlines.TitleAirlane}",
-                    AirportDeparture = $"{f.Airports.CodeIATA}",
-                    AirportArrival = $"{f.Airports1.CodeIATA}",
+
                     DepartureDate = $"{f.DepartureDate.ToString("yyyy-MM-dd")}",
                     DepartureTime = $"{f.DepartureTime}",
                     ArrivalDate = $"{f.ArrivalDate.ToString("yyyy-MM-dd")}",
                     ArrivalTime = $"{f.ArrivalTime}",
+
+                    AirportDeparture = $"{f.Airports.TitleAirport}",
+                    AirportArrival = $"{f.Airports1.TitleAirport}",
+                    AirportDepartureCode = $"{f.Airports.CodeIATA}",
+                    AirportArrivalCode = $"{f.Airports1.CodeIATA}",
+
+                    AirLine = $"{f.Airlines.TitleAirlane}",
+                    Airplane = f.Airplane.TitleAirplane,
                     Status = $"{f.Status.TitleStatus}",
                     TotalSeats = f.Airplane.TotalSeats,
                     TotalSeatsFree = f.TotalSeatsFree,
                     GateNumber = f.Gates.GateNumber
 
                 })
-                .FirstOrDefault(x => x.FlightNumber == FlightNumberIn);
+                .FirstOrDefault(x => x.IdFlight == id);
                 
             
                 
@@ -262,7 +281,7 @@ namespace Airport.Repositories.Flight
             return null;
         }
 
-        public bool Update2(int id, DateTime arrivalDate = new DateTime(), DateTime departureDate = new DateTime(), TimeSpan arrivalTime = new TimeSpan(), TimeSpan departureTime = new TimeSpan())
+        public bool Update1(int id, DateTime arrivalDate = new DateTime(), DateTime departureDate = new DateTime(), TimeSpan arrivalTime = new TimeSpan(), TimeSpan departureTime = new TimeSpan())
         {
             var model = _db.context.Flights.FirstOrDefault(x => x.IdFlight == id);
             model.ArrivalDate = arrivalDate != new DateTime() ? arrivalDate : model.ArrivalDate;
@@ -273,7 +292,7 @@ namespace Airport.Repositories.Flight
             return true;
         }
 
-        public bool Update3(int id, int airLine = 0, int airPlane = 0)
+        public bool Update2(int id, int airLine = 0, int airPlane = 0)
         {
             var model = _db.context.Flights.FirstOrDefault(x => x.IdFlight == id);
             model.IdAirlane = airLine != 0 ? airLine : model.IdAirlane;
@@ -282,7 +301,7 @@ namespace Airport.Repositories.Flight
             return true;
         }
 
-        public bool Update4(int id, int arrivalAirport = 0, int departureAirport =  0 )
+        public bool Update3(int id, int arrivalAirport = 0, int departureAirport =  0 )
         {
             var model = _db.context.Flights.FirstOrDefault(x => x.IdFlight == id);
             model.AirportDeparturesId = departureAirport != 0 ? departureAirport : model.AirportDeparturesId;
@@ -301,7 +320,10 @@ namespace Airport.Repositories.Flight
             return true;
         }
 
-        
+        public List<Models.Status> GetAllListStatus()
+        {
+            return _db.context.Status.ToList();
+        }
         
     }
 }

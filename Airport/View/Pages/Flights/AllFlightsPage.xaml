@@ -4,8 +4,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Airport.View.Pages.Flights"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
-      d:DesignHeight="940" d:DesignWidth="1930"
+      d:DesignHeight="940" d:DesignWidth="1615"
       Title="AllFlightsPage"
       >
 
@@ -23,37 +24,40 @@
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1673" />
+                <ColumnDefinition Width="1400" />
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <DataGrid Grid.Column="0"  AutoGenerateColumns="False" x:Name="Flights_DataGrid">
+            <DataGrid Grid.Column="0"  AutoGenerateColumns="False" x:Name="Flights_DataGrid" Width="1220">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Flight Number" Binding="{Binding FlightNumber}"/>
-                    <DataGridTextColumn Header="Airline" Binding="{Binding AirLine}"/>
-                    <DataGridTextColumn Header="Departure Airport" Binding="{Binding AirportDeparture}"/>
-                    <DataGridTextColumn Header="Arrival Airport" Binding="{Binding AirportArrival}"/>
-                    <DataGridTextColumn Header="Departure Date" Binding="{Binding DepartureDate}"/>
-                    <DataGridTextColumn Header="Departure Time" Binding="{Binding DepartureTime}"/>
-                    <DataGridTextColumn Header="Arrival Date" Binding="{Binding ArrivalDate}"/>
-                    <DataGridTextColumn Header="Arrival Time" Binding="{Binding ArrivalTime}"/>
-                    <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                    <DataGridTextColumn Width="85"  Header="IdFlight" Binding="{Binding IdFlight}"/>
+                    <DataGridTextColumn Width="85"  Header="Flight Number" Binding="{Binding FlightNumber}"/>
+                    <DataGridTextColumn Width="110" Header="Code Al" Binding="{Binding AirLine}"/>
+                    <DataGridTextColumn Width="110" Header="DepAir" Binding="{Binding AirportDeparture}"/>
+                    <DataGridTextColumn Width="110" Header="ArriAir" Binding="{Binding AirportArrival}"/>
+                    <DataGridTextColumn Width="130" Header="DepDate" Binding="{Binding DepartureDate}"/>
+                    <DataGridTextColumn Width="130" Header="DepTime" Binding="{Binding DepartureTime}"/>
+                    <DataGridTextColumn Width="130" Header="ArrDate" Binding="{Binding ArrivalDate}"/>
+                    <DataGridTextColumn Width="130" Header="ArrTime" Binding="{Binding ArrivalTime}"/>
+                    <DataGridTextColumn Width="130" Header="Status" Binding="{Binding Status}"/>
                     <DataGridTemplateColumn Header="Action">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="More Info" 
-                    Style="{StaticResource InfoButtonStyle}" 
-                    Click="InfoButton_Click" 
-                    Tag="{Binding FlightNumber}" />
-                            </DataTemplate>
+                                 <Button Content="More Info" 
+                                    Style="{StaticResource InfoButtonStyle}" 
+                                    Click="InfoButton_Click" 
+                                     />
+                                    </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
+                     </DataGridTemplateColumn>
+             </DataGrid.Columns>
+                
+               
 
 
             </DataGrid>
-            <Button x:Name="FilterFlights_Button" Grid.Column="1" Content="F" VerticalAlignment="Top" Margin="0 10"
+            <Button x:Name="FilterFlights_Button" Grid.Column="1" Content="F" VerticalAlignment="Top" Margin="0,10,6,0"
                     Style="{StaticResource FilterStyleButton}"
-                    Click="FilterFlights_Button_Click"
+                    Click="FilterFlights_Button_Click" Height="85"
             />
         </Grid>
         <Grid Grid.Row="1">
@@ -61,8 +65,8 @@
                 <ColumnDefinition Width="1650"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="AddFlight_Button" Grid.Column="0" Content="Add Flight" Style="{StaticResource ButtonUnder}" Width="251" Height="85" HorizontalAlignment="Right" Click="AddFlight_Button_Click"/>
-            <Button x:Name="DeleteAllFlight_Button" Grid.Column="2" Content="DeleteAllFlight" Style="{StaticResource ButtonUnder}" Width="251" Height="85" HorizontalAlignment="Right"/>
+            <Button x:Name="AddFlight_Button" Grid.Column="0" Content="Add Flight" Style="{StaticResource ButtonUnder}" Width="251" Height="85" HorizontalAlignment="Left" Click="AddFlight_Button_Click" Margin="1342,28,0,27"/>
+            <Button x:Name="DeleteAllFlight_Button" Content="DeleteAllFlight" Style="{StaticResource ButtonUnder}" Width="251" Height="85" HorizontalAlignment="Left" Margin="1050,28,0,27"/>
         </Grid>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
 ﻿using Airport.Controllers.Booking;
+using Airport.Repositories.Flight;
 using Airport.Repositories.RegistrationTicket;
 using Airport.ViewModel.PassangerViewModel;
 using System;
@@ -14,13 +15,15 @@ namespace Airport.Controllers.Ticket
     {
         private readonly TicketSellingRepository _ticketSellingRepository;
         private readonly BookingTicketsController _bookingTicketsController;
+        private readonly FlightsRepository _flightsRepository;
         public TicketSellingController()
         {
             _ticketSellingRepository = new TicketSellingRepository();
             _bookingTicketsController = new BookingTicketsController();
+            _flightsRepository = new FlightsRepository();
         }
 
-        public bool TicketBuy(int idFlight, int numberTicket, string passportNumber, string placeOfIssue, DateTime dateOfIssue,
+        public bool TicketBuy(int idFlight, string passportNumber, string placeOfIssue, DateTime dateOfIssue,
             string firstName, string secondName, string surName, DateTime dateOfBirth, int formOfPayment, string email)
         {
             try
@@ -45,7 +48,10 @@ namespace Airport.Controllers.Ticket
 
                         }
                     );
+                
+                
                 var result = _bookingTicketsController.TicketPlusBooking(lastTicket.NumberTicket + 1);
+                _flightsRepository.UpdateTotalSeatsFree(idFlight);
                 if (result) return true; else return false;
 
             }

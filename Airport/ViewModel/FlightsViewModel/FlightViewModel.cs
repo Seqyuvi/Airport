@@ -8,6 +8,7 @@ namespace Airport.ViewModel.FlightsViewModel
 {
     public class FlightViewModel
     {
+        public int IdFlight { get; set; }
         public string FlightNumber { get; set; }
         public string AirLine { get; set; } 
         public string AirportDeparture { get; set; }

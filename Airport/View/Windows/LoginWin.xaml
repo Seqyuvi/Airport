@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:Airport.View.Windows"
         mc:Ignorable="d"
         Title="LoginWin" Height="635" Width="450"
@@ -21,13 +22,13 @@
         </Grid.RowDefinitions>
         <Image Grid.Row="0" Source="../../Assets/Images/Logo.png" Width="220" Height="120" VerticalAlignment="Bottom"/>
         <StackPanel Grid.Row="1">
-            <TextBox Style="{StaticResource MyWaterMarkStyle}"  x:Name="EnterLogin_TextBox"  Width="360" Height="60" Margin="0 85 0 0" Tag="Login" RenderTransformOrigin="0.5,0.5"/>
+            <xctk:WatermarkTextBox  x:Name="EnterLogin_TextBox"  Width="360" Height="60" Margin="0 85 0 0" Watermark="Login" RenderTransformOrigin="0.5,0.5" VerticalContentAlignment="Center"/>
 
         </StackPanel>
 
         <StackPanel Grid.Row="2">
-            <PasswordBox x:Name="EnterPassword_PasswordBox"
-                  Style="{StaticResource RoundedPasswordBox}" 
+            <xctk:WatermarkPasswordBox x:Name="EnterPassword_PasswordBox"
+                  Watermark="Password"
                   Width="360" Height="60" Margin="0 85 0 0"
                   PasswordChanged="MyPasswordBox_PasswordChanged"
                       VerticalContentAlignment="Center"/>

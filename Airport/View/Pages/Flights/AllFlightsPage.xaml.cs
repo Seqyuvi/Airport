@@ -1,4 +1,6 @@
 ﻿using Airport.Controllers.Flights;
+using Airport.View.Windows;
+using Airport.ViewModel.FlightsViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,12 +35,24 @@ namespace Airport.View.Pages.Flights
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
         {
+            if (sender is Button button)
+            {
+                // 2. Получаем данные строки из DataContext
+                if (button.DataContext is FlightViewModel item)
+                {
+                    // 3. Создаем страницу с деталями
+                    var detailsPage = new MoreInformationPage(item);
 
+                    // 4. Загружаем страницу в Frame
+                    this.NavigationService.Navigate(detailsPage);
+                }
+            }
         }
 
         private void FilterFlights_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            FilterWindow filterWindow = new FilterWindow();
+            filterWindow.Show();
         }
 
         private void AddFlight_Button_Click(object sender, RoutedEventArgs e)

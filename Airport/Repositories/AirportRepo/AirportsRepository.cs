@@ -19,7 +19,8 @@ namespace Airport.Repositories.AirportRepo
 
         public List<Airports> GetAll()
         {
-            return _db.context.Airports.ToList();
+            var result = _db.context.Airports.ToList();
+            return result;
         }
     }
 }

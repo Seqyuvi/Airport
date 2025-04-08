@@ -44,6 +44,7 @@ namespace Airport.Controllers.Booking
                         button: MessageBoxButton.OK,
                         icon: MessageBoxImage.Error);
                 });
+                throw new Exception(ex.Message);
             }
             
 
