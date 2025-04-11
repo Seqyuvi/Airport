@@ -1,4 +1,5 @@
 ﻿using Airport.View.Pages;
+using Airport.View.Pages.CartTicket;
 using Airport.View.Pages.Flights;
 using Airport.View.Pages.Passanger;
 using System;
@@ -42,6 +43,11 @@ namespace Airport
         private void FindPassanger_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new FindPassangerPage());
+        }
+
+        private void CartTicket_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new CartTicketPage());
         }
     }
 }

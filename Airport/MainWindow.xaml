@@ -29,6 +29,10 @@
                     <MenuItem Header="All Passanger"></MenuItem>
                     <MenuItem Header="Find Passanger" x:Name="FindPassanger_MenuItem" Click="FindPassanger_MenuItem_Click"></MenuItem>
                 </MenuItem>
+                <MenuItem Header="CartTicket" Height="63" Width="173" Margin="0 0 0 0">
+                    <MenuItem Header="Check Cart Ticket" x:Name="CartTicket_MenuItem" Click="CartTicket_MenuItem_Click"></MenuItem>
+                    
+                </MenuItem>
                 <MenuItem Header="Reports" Height="63" Width="173" Margin="0 0 0 0">
                     <MenuItem Header="All Flights"></MenuItem>
                     <MenuItem Header="Find Flight"></MenuItem>

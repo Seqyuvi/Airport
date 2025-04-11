@@ -37,7 +37,7 @@ namespace Airport.View.Pages.Flights.UpdateFlights
             _airlineController = new AirlineController();
             _airplaneController = new AirplaneController();
 
-            var information = _moreInformationFlightController.GetMore(UpdateFlightHelper.idFlight);
+            var information = _moreInformationFlightController.GetMore(FlightHelper.idFlight);
 
             Airline_ComboBox.ItemsSource = _airlineController.GetAllAirlines().Select(x => x.TitleAirlane).ToList();
             Airplane_ComboBox.ItemsSource = _airplaneController.GetAllAirplane().Select(x => x.TitleAirplane).ToList();
@@ -47,7 +47,7 @@ namespace Airport.View.Pages.Flights.UpdateFlights
         {
             var airline = Airline_ComboBox.SelectedValue != null ? Airline_ComboBox.SelectedValue.ToString() : "";
             var airplane = Airplane_ComboBox.SelectedValue != null ? Airplane_ComboBox.SelectedValue.ToString() : "";
-            _updateController.Update3(UpdateFlightHelper.idFlight, airline, airplane);
+            _updateController.Update3(FlightHelper.idFlight, airline, airplane);
         }
     }
 }

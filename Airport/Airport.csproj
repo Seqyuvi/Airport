@@ -98,7 +98,8 @@
     <Compile Include="Controllers\Ticket\TicketSellingController.cs" />
     <Compile Include="Data\Core.cs" />
     <Compile Include="Helpers\ModelHelper\BookingMiodelHelper.cs" />
-    <Compile Include="Helpers\ModelHelper\UpdateFlightHelper.cs" />
+    <Compile Include="Helpers\ModelHelper\TickerSellingCartServiceHelper.cs" />
+    <Compile Include="Helpers\ModelHelper\FlightHelper.cs" />
     <Compile Include="Helpers\Validation\FlightsValid\FlightsValidation.cs" />
     <Compile Include="Helpers\Validation\GeneralValid\GeneralValidation.cs" />
     <Compile Include="Helpers\Validation\MailValid\MailValidation.cs" />
@@ -184,6 +185,9 @@
     <Compile Include="ViewModel\FlightsViewModel\FlightViewModel.cs" />
     <Compile Include="ViewModel\FlightsViewModel\MoreInformationViewModel.cs" />
     <Compile Include="ViewModel\PassangerViewModel\PassangerListViewModel.cs" />
+    <Compile Include="View\Pages\CartTicket\CartTicketPage.xaml.cs">
+      <DependentUpon>CartTicketPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\Filters\FlightFilters.xaml.cs">
       <DependentUpon>FlightFilters.xaml</DependentUpon>
     </Compile>
@@ -267,6 +271,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Pages\CartTicket\CartTicketPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pages\Filters\FlightFilters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

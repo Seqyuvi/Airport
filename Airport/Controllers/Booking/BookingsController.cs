@@ -22,14 +22,14 @@ namespace Airport.Controllers.Booking
         {
             try
             {
-                var lastBooking = _bookingRepository.GetAll()
+                var lastBooking = _bookingRepository.GetAll().Where(x => x.BookingCode != "")
                .Last();
 
                 var bookingNew = new Bookings
                 {
                     IdBooking = lastBooking.IdBooking + 1,
                     BookingCode = GenerateBookingCode(lastBooking.BookingCode),
-                    BookingDate = DateTime.Now,
+                    BookingDate = DateTime.Now.Date,
                     TotalPrice = 0,
                     IdBookingStatus = 1
                 };
@@ -64,9 +64,10 @@ namespace Airport.Controllers.Booking
         {
             try
             {
-                int number = int.Parse(bookingCode.Split('0').Last());
+                string numericPart = new string(bookingCode.Where(char.IsDigit).ToArray()).TrimStart('0');
+                int number = numericPart.Length > 0 ? int.Parse(numericPart) : 0;
                 number += 1;
-                string newCode = "BK" + number.ToString($"D{number.ToString().Length}");
+                string newCode = "BK" + number.ToString($"D{8 - number.ToString().Length}");
                 return newCode;
             }
             catch (Exception ex)

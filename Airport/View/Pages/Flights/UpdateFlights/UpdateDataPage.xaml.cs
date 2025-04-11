@@ -30,7 +30,7 @@ namespace Airport.View.Pages.Flights.UpdateFlights
             InitializeComponent();
             _moreInformationFlightController = new MoreInformationFlightController();
             _updateController = new UpdateController();
-            var information = _moreInformationFlightController.GetMore(UpdateFlightHelper.idFlight);
+            var information = _moreInformationFlightController.GetMore(FlightHelper.idFlight);
             ArrivalDate_DatePicker.Watermark = information.ArrivalDate;
             DepartureDate_DatePicker.Watermark = information.DepartureDate;
             ArrivalTime_DatePicker.Watermark = information.ArrivalTime;
@@ -44,7 +44,7 @@ namespace Airport.View.Pages.Flights.UpdateFlights
             var depTime = DepartureTime_DatePicker.Text != null ? new TimeSpan(Convert.ToInt32(DepartureTime_DatePicker.Text.Split(':')[0]), Convert.ToInt32(DepartureTime_DatePicker.Text.Split(':')[1]), 0) : new TimeSpan();
             var arrTime = ArrivalTime_DatePicker.Text != null ? new TimeSpan(Convert.ToInt32(ArrivalTime_DatePicker.Text.Split(':')[0]), Convert.ToInt32(ArrivalTime_DatePicker.Text.Split(':')[1]), 0) : new TimeSpan();
             _updateController.Update2(
-                UpdateFlightHelper.idFlight, arrDate, depDate, arrTime, depTime
+                FlightHelper.idFlight, arrDate, depDate, arrTime, depTime
             );
         }
     }

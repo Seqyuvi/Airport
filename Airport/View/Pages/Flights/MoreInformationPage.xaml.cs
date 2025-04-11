@@ -63,13 +63,14 @@ namespace Airport.View.Pages.Flights
 
         private void TicketSell_Button_Click(object sender, RoutedEventArgs e)
         {
+            FlightHelper.idFlight = idFlight;
             this.NavigationService.Navigate(new TicketSellingPage());
         }
 
         private void UpdateFlight_Button_Click(object sender, RoutedEventArgs e)
         {
             UpdateFlightWindow updateFlightWindow = new UpdateFlightWindow();
-            UpdateFlightHelper.idFlight = idFlight;
+            FlightHelper.idFlight = idFlight;
             updateFlightWindow.Show();
         }
 

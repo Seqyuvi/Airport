@@ -1,4 +1,5 @@
 ﻿using Airport.Controllers.Booking;
+using Airport.Helpers.ModelHelper;
 using Airport.Repositories.Flight;
 using Airport.Repositories.RegistrationTicket;
 using Airport.ViewModel.PassangerViewModel;
@@ -23,35 +24,19 @@ namespace Airport.Controllers.Ticket
             _flightsRepository = new FlightsRepository();
         }
 
-        public bool TicketBuy(int idFlight, string passportNumber, string placeOfIssue, DateTime dateOfIssue,
-            string firstName, string secondName, string surName, DateTime dateOfBirth, int formOfPayment, string email)
+        public bool TicketBuy(Models.TicketsSelling model)
         {
             try
             {
-                var lastTicket = _ticketSellingRepository.GetAll().Last();
+               
                 _ticketSellingRepository.Create
                     (
-                        new Models.TicketsSelling
-                        {
-                            IdFlight = idFlight,
-                            NumberTicket = lastTicket.NumberTicket + 1,
-                            PassportNumber = passportNumber,
-                            PlaceOfIssue = placeOfIssue,
-                            DateOfIssue = dateOfIssue,
-                            FirstName = firstName,
-                            SecondName = secondName,
-                            Surname = surName,
-                            DateOfBirth = dateOfBirth,
-                            BagageCount = 2,
-                            FormOfPaymentId = formOfPayment,
-                            Email = email
-
-                        }
+                       model
                     );
                 
                 
-                var result = _bookingTicketsController.TicketPlusBooking(lastTicket.NumberTicket + 1);
-                _flightsRepository.UpdateTotalSeatsFree(idFlight);
+                var result = _bookingTicketsController.TicketPlusBooking(model.IdTicketSelling);
+                
                 if (result) return true; else return false;
 
             }
@@ -66,6 +51,56 @@ namespace Airport.Controllers.Ticket
                         icon: MessageBoxImage.Error);
                 });
                 throw new Exception($"Ошибка покупки билета:{ex.Message}");
+            }
+        }
+
+        private Models.TicketsSelling GetLastTicket()
+        {
+            return _ticketSellingRepository.GetAll().Last();
+        }
+
+        public bool TicketAddCart(int idFlight, string passportNumber, string placeOfIssue, DateTime dateOfIssue,
+            string firstName, string secondName, string surName, DateTime dateOfBirth, int formOfPayment, string email, int ticketCount )
+        {
+            try
+            {
+                var lastTicket = GetLastTicket();
+                TickerSellingCartServiceHelper.ListTicket.Add
+                    (
+                        new Models.TicketsSelling
+                        {
+                            IdFlight = idFlight,
+                            NumberTicket = lastTicket.NumberTicket + ticketCount + 1,
+                            PassportNumber = passportNumber,
+                            PlaceOfIssue = placeOfIssue,
+                            DateOfIssue = dateOfIssue,
+                            FirstName = firstName,
+                            SecondName = secondName,
+                            Surname = surName,
+                            DateOfBirth = dateOfBirth,
+                            BagageCount = 2,
+                            FormOfPaymentId = formOfPayment,
+                            Email = email
+
+                        }
+                    );
+
+
+                 var result = _flightsRepository.UpdateTotalSeatsFree(idFlight);
+                if (result) return true; else return false;
+
+            }
+            catch (Exception ex)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    MessageBox.Show(
+                        messageBoxText: $"Ошибка добавления билета: {ex.Message}",
+                        caption: "Ошибка",
+                        button: MessageBoxButton.OK,
+                        icon: MessageBoxImage.Error);
+                });
+                throw new Exception($"Ошибка добавления билета:{ex.Message}");
             }
         }
 

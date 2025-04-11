@@ -38,7 +38,7 @@ namespace Airport.View.Pages.Flights.UpdateFlights
             _updateController = new UpdateController();
             _gatesController = new GatesController();
                 
-            var information = _moreInformationFlightController.GetMore(UpdateFlightHelper.idFlight);
+            var information = _moreInformationFlightController.GetMore(FlightHelper.idFlight);
 
             FlightNumber_TextBox.Text = information.FlightNumber;
             Status_ComboBox.ItemsSource = _allFlightsController.GetAllStatus().Select(x => x.TitleStatus).ToList();
@@ -51,7 +51,7 @@ namespace Airport.View.Pages.Flights.UpdateFlights
         {
             var status = Status_ComboBox.SelectedValue != null ? Status_ComboBox.SelectedValue.ToString() : "";
             var gate = Gate_ComboBox.SelectedValue != null ? Gate_ComboBox.SelectedValue.ToString() : "";
-            _updateController.Update1(UpdateFlightHelper.idFlight, FlightNumber_TextBox.Text, status, gate);
+            _updateController.Update1(FlightHelper.idFlight, FlightNumber_TextBox.Text, status, gate);
         }
     }
 }

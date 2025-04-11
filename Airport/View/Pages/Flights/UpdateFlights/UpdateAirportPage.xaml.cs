@@ -34,7 +34,7 @@ namespace Airport.View.Pages.Flights.UpdateFlights
             _updateController = new UpdateController();
             _addFlightController = new AddFlightController();
 
-            var information = _moreInformationFlightController.GetMore(UpdateFlightHelper.idFlight);
+            var information = _moreInformationFlightController.GetMore(FlightHelper.idFlight);
 
             ArrivalAirport_ComboBox.ItemsSource = _addFlightController.GetAllAirports().Select(x => x.CodeIATA).ToList();
             DepartureAirport_ComboBox.ItemsSource = _addFlightController.GetAllAirports().Select(x => x.CodeIATA).ToList();
@@ -44,7 +44,7 @@ namespace Airport.View.Pages.Flights.UpdateFlights
         {
             var arrAir = ArrivalAirport_ComboBox.SelectedValue != null ? ArrivalAirport_ComboBox.SelectedValue.ToString() : "";
             var depAir = DepartureAirport_ComboBox.SelectedValue != null ? DepartureAirport_ComboBox.SelectedValue.ToString() : "";
-            _updateController.Update4(UpdateFlightHelper.idFlight, arrAir, depAir);
+            _updateController.Update4(FlightHelper.idFlight, arrAir, depAir);
         }
     }
 }
