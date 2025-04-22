@@ -21,8 +21,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid HorizontalAlignment="Center">
-            
-            <DataGrid  AutoGenerateColumns="False" x:Name="Passanger_DataGrid"  ColumnWidth="SizeToCells">
+
+            <DataGrid  AutoGenerateColumns="False" x:Name="Passanger_DataGrid"  Width="1550"  ColumnWidth="*">
                 <DataGrid.Columns>
                     <DataGridTextColumn   Header="Id" Binding="{Binding IdTicketSelling}"/>
                     <DataGridTextColumn  Header="IdFlight" Binding="{Binding IdFlight}"/>

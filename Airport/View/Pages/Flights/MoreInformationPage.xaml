@@ -8,10 +8,17 @@
       mc:Ignorable="d" 
       d:DesignHeight="940" d:DesignWidth="1615"
       Title="MoreInformationPage">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../../Assets/Resources/GeneralDictionary.xaml"/>
+                <ResourceDictionary Source="../../../Assets/Resources/DictionaryALLFlights.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="80" />
             <RowDefinition/>
             <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
@@ -19,7 +26,7 @@
                    HorizontalAlignment="Center"
                    x:Name="InformationFlight_TextBlock"
                    />
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Margin="30 0 0 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -94,9 +101,11 @@
 
                     <TextBlock Grid.Column="1" Grid.Row="0"
                                 x:Name="DepartureAirport_TextBlock"
+                               TextWrapping="Wrap"
                                 FontSize="30" VerticalAlignment="Center" />
                     <TextBlock Grid.Column="1" Grid.Row="1"
                                 x:Name="ArrivalAirport_TextBlock"
+                               TextWrapping="Wrap"
                                 FontSize="30" VerticalAlignment="Center"/>
                     <TextBlock Grid.Column="1" Grid.Row="2"
                                 x:Name="DepartureAirportCode_TextBlock"
@@ -106,7 +115,7 @@
                                 FontSize="30" VerticalAlignment="Center"/>
                 </Grid>
             </Grid>
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1"  Margin="28,0,-29,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="510"/>
                     <RowDefinition/>
@@ -166,18 +175,18 @@ FontSize="30" VerticalAlignment="Center" />
 x:Name="GateNumber_TextBlock"
 FontSize="30" VerticalAlignment="Center" />
                 </Grid>
-                <Button Grid.Row="2" x:Name="TicketSell_Button" Width="400" Height="100" Content="TicketMenu" Click="TicketSell_Button_Click"/>
-                <Button Grid.Row="3" x:Name="Registration_Button" Width="400" Height="100" Content="RegistrationMenu" Click="Registration_Button_Click"/>
+                <Button Grid.Row="1" Style="{StaticResource ButtonUnder}" x:Name="TicketSell_Button" Height="100" Content="TicketMenu" Click="TicketSell_Button_Click" Margin="204,17,160,36" Grid.RowSpan="2"/>
+                <Button Grid.Row="2" Style="{StaticResource ButtonUnder}" x:Name="Registration_Button" Height="100" Content="RegistrationMenu" Click="Registration_Button_Click" Margin="204,53,160,0" Grid.RowSpan="2"/>
             </Grid>
-            
+
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1200"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Width="400" Height="100" Content="UpdateFlight" x:Name="UpdateFlight_Button" Click="UpdateFlight_Button_Click" HorizontalAlignment="Right"/>
-            <Button Grid.Column="1" Width="400" Height="100" Content="DeleteFlight" x:Name="DeleteFlight_Button" Click="DeleteFlight_Button_Click"/>
+            <Button Grid.Column="0" Style="{StaticResource ButtonUnder}" Width="400" Height="100" Content="UpdateFlight" x:Name="UpdateFlight_Button" Click="UpdateFlight_Button_Click" HorizontalAlignment="Right"/>
+            <Button Grid.Column="1" Style="{StaticResource ButtonUnder}" Width="400" Height="100" Content="DeleteFlight" x:Name="DeleteFlight_Button" Click="DeleteFlight_Button_Click"/>
         </Grid>
     </Grid>
 </Page>

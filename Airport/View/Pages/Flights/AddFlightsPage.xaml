@@ -100,7 +100,7 @@
             Watermark="DepartureTime"
             Format="ShortTime" Height="60" Width="500"
             x:Name="DepartureTime_DatePicker"/>
-        <Button Grid.Row="4" Grid.Column="1" Height="100" Width="500" Content="Add" x:Name="AddFlight_Button" Click="AddFlight_Button_Click_1" />
+        <Button Grid.Row="4" Grid.Column="1" Style="{StaticResource ButtonUnder}" Height="100" Width="500" Content="Add" x:Name="AddFlight_Button" Click="AddFlight_Button_Click_1" />
     </Grid>
     
 

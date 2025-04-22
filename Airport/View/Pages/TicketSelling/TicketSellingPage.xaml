@@ -12,6 +12,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../../../Assets/Resources/GeneralDictionary.xaml"/>
+                <ResourceDictionary Source="../../../Assets/Resources/DictionaryALLFlights.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -144,9 +145,9 @@ FontSize="30" VerticalAlignment="Center" />
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Width="400" Height="100" Content="Apply" HorizontalAlignment="Right" x:Name="Apply_Button" Click="Apply_Button_Click"/>
-            <Button Grid.Column="1" x:Name="Cancel_Button" Width="400" Height="100" Click="Cancel_Button_Click" Content="Cancel"/>
-            <Button Grid.Column="2" x:Name="AllTicket_Button" Width="400" Height="100" Click="AllTicket_Button_Click"   Content="AllTicket"/>
+            <Button Grid.Column="0" Width="400" Height="100" Style="{StaticResource ButtonUnder}" Content="Apply" HorizontalAlignment="Right" x:Name="Apply_Button" Click="Apply_Button_Click"/>
+            <Button Grid.Column="1" Style="{StaticResource ButtonUnder}" x:Name="Cancel_Button" Width="400" Height="100" Click="Cancel_Button_Click" Content="Cancel"/>
+            <Button Grid.Column="2" Style="{StaticResource ButtonUnder}" x:Name="AllTicket_Button" Width="400" Height="100" Click="AllTicket_Button_Click"   Content="AllTicket"/>
         </Grid>
     </Grid>
 </Page>

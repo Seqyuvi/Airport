@@ -13,6 +13,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../../../Assets/Resources/GeneralDictionary.xaml"/>
+                <ResourceDictionary Source="../../../Assets/Resources/DictionaryALLFlights.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -50,7 +51,7 @@
                              />
             </Grid>
         </Grid>
-        <Button Grid.Row="2" x:Name="Find_Button" Click="Find_Button_Click" Content="Find" FontSize="50" Width="205" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button Grid.Row="2" x:Name="Find_Button" Style="{StaticResource ButtonUnder}" Click="Find_Button_Click" Content="Find" FontSize="50" Width="205" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
     
 </Page>

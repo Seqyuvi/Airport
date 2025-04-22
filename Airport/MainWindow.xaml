@@ -13,6 +13,7 @@
         <ResourceDictionary Source="Assets/Resources/DictionaryMainWindowNavigation.xaml" />
 
     </Window.Resources>
+    
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="305"/>

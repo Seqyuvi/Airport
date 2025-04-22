@@ -24,8 +24,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid HorizontalAlignment="Center">
-            
-            <DataGrid   AutoGenerateColumns="False" x:Name="Flights_DataGrid" Width="Auto" ColumnWidth="SizeToCells" >
+
+            <DataGrid   AutoGenerateColumns="False" x:Name="Flights_DataGrid" Width="1550"  ColumnWidth="*" >
                 <DataGrid.Columns>
                     <DataGridTextColumn   Header="IdFlight" Binding="{Binding IdFlight}"/>
                     <DataGridTextColumn   Header="Flight Number" Binding="{Binding FlightNumber}"/>
@@ -61,7 +61,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ClearSearh_Button" Grid.Column="0" Content="Clear Searh" Style="{StaticResource ButtonUnder}" Width="251" Height="85" HorizontalAlignment="Left" Click="ClearSearh_Button_Click" />
+            <Button Margin="35 0 0 0" x:Name="ClearSearh_Button" Grid.Column="0" Content="Clear Searh" Style="{StaticResource ButtonUnder}" Width="251" Height="85" HorizontalAlignment="Left" Click="ClearSearh_Button_Click" />
             <Button x:Name="AddFlight_Button" Grid.Column="1" Content="Add Flight" Style="{StaticResource ButtonUnder}" Width="251" Height="85" HorizontalAlignment="Left" Click="AddFlight_Button_Click" />
             <Button x:Name="DeleteAllFlight_Button" Grid.Column="2" Content="DeleteAllFlight" Style="{StaticResource ButtonUnder}" Width="251" Height="85" HorizontalAlignment="Left" Click="DeleteAllFlight_Button_Click"/>
         </Grid>

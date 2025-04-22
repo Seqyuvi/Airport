@@ -29,6 +29,6 @@
         <xctk:WatermarkComboBox  
 Watermark="Airplane"
 Grid.Row="1" Width="500" Height="70" x:Name="Airplane_ComboBox"/>
-        <Button x:Name="Apply_Button" Grid.Row="4" Content="Apply" Width="300" Height="100" Click="Apply_Button_Click"/>
+        <Button x:Name="Apply_Button" Style="{StaticResource ButtonUnder}" Grid.Row="4" Content="Apply" Width="300" Height="100" Click="Apply_Button_Click"/>
     </Grid>
 </Page>
