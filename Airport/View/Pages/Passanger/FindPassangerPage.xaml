@@ -1,0 +1,55 @@
+﻿<Page x:Class="Airport.View.Pages.Passanger.FindPassangerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Airport.View.Pages.Passanger"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="940" d:DesignWidth="1615"
+      Title="FindPassangerPage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../../Assets/Resources/GeneralDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Find Passanger" FontSize="64" HorizontalAlignment="Center"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="900"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <xctk:WatermarkTextBox x:Name="FlightInformation_TextBox"
+                 Watermark="Enter Flight Information"
+                
+                 Width="854" Height="115"/>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <RadioButton Grid.Row="0" GroupName="FindType_Passanger_RadioButton"
+                         Content="Passport"
+                             x:Name="Passport_RadioButton"
+                         FontSize="45"
+                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <RadioButton Grid.Row="1" GroupName="FindType_Passanger_RadioButton"
+                         Content="Fio"
+                             x:Name="Fio_RadioButton"
+                         FontSize="45"
+                         HorizontalAlignment="Center" VerticalAlignment="Center"
+                         />
+            </Grid>
+        </Grid>
+        <Button Grid.Row="2" Content="Find" x:Name="Find_Button" Click="Find_Button_Click" FontSize="50" Width="205" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
+</Page>

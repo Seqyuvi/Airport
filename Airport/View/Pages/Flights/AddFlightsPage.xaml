@@ -1,0 +1,107 @@
+﻿<Page x:Class="Airport.View.Pages.Flights.AddFlightsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Airport.View.Pages.Flights"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="940" d:DesignWidth="1930"
+      Title="AddFlightsPage">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- AAA-NNN -->
+        <xctk:WatermarkTextBox 
+            Grid.Row="0" Grid.Column="0" 
+            Watermark="AAA-NNN" Height="60" Width="500"
+            x:Name="FlightNumber_TextBox"
+            
+            />
+
+        <!-- AirLine -->
+        <xctk:WatermarkComboBox 
+            IsEditable="True"
+            Grid.Row="1" Grid.Column="0" 
+            Watermark="AirLine" Height="60" Width="500"
+            x:Name="Airline_ComboBox"
+            />
+
+        <!-- Airport Departure -->
+        <xctk:WatermarkComboBox 
+            IsEditable="True"
+            
+            Grid.Row="2" Grid.Column="0" 
+            Watermark="Airport Departure" Height="60" Width="500"
+            x:Name="DepartureAirprot_ComboBox"/>
+
+        <!-- Airport Arrival -->
+        <xctk:WatermarkComboBox 
+            IsEditable="True"
+            
+            Grid.Row="3" Grid.Column="0" 
+            Watermark="Airport Arrival" Height="60" Width="500"
+            x:Name="ArrivalAirport_ComboBox"/>
+
+        <!-- Airplane -->
+        <xctk:WatermarkComboBox 
+            IsEditable="True"
+            
+            Grid.Row="1" Grid.Column="1" 
+            Watermark="Airplane" Height="60" Width="500"
+            x:Name="Airplane_ComboBox"
+            SelectionChanged="Airplane_ComboBox_SelectionChanged"/>
+
+        <!-- Total Seats Free -->
+        <xctk:WatermarkTextBox
+            Grid.Row="2" Grid.Column="1" 
+            Watermark="Total Seats Free" Height="60" Width="500"
+            x:Name="TotalSeatsFree_TextBox"
+            IsReadOnly="True"
+            />
+
+        <!-- ArrivalDate -->
+        <xctk:DateTimePicker 
+            Grid.Row="0" Grid.Column="2" 
+            Watermark="ArrivalDate"
+            Format="ShortDate" Height="60" Width="500"
+            x:Name="ArrivalDate_DatePicker"/>
+
+        <!-- DepartureDate -->
+        <xctk:DateTimePicker 
+            Grid.Row="1" Grid.Column="2" 
+            Watermark="DepartureDate"
+            Format="ShortDate" Height="60" Width="500"
+            x:Name="DepartureDate_DatePicker"/>
+
+        <!-- ArrivalTime -->
+        <xctk:DateTimePicker 
+            Grid.Row="2" Grid.Column="2" 
+            Watermark="ArrivalTime"
+            Format="ShortTime" Height="60" Width="500"
+            x:Name="ArrivalTime_DatePicker"/>
+
+        <!-- DepartureTime -->
+        <xctk:DateTimePicker 
+            Grid.Row="3" Grid.Column="2" 
+            Watermark="DepartureTime"
+            Format="ShortTime" Height="60" Width="500"
+            x:Name="DepartureTime_DatePicker"/>
+        <Button Grid.Row="4" Grid.Column="1" Height="100" Width="500" Content="Add" x:Name="AddFlight_Button" Click="AddFlight_Button_Click_1" />
+    </Grid>
+    
+
+</Page>

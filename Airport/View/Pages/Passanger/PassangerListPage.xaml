@@ -1,0 +1,56 @@
+﻿<Page x:Class="Airport.View.Pages.Passanger.PassangerListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Airport.View.Pages.Passanger"
+      mc:Ignorable="d" 
+      d:DesignHeight="940" d:DesignWidth="1615"
+      Title="PassangerListPage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../../Assets/Resources/DictionaryALLFlights.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="800"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid HorizontalAlignment="Center">
+            
+            <DataGrid  AutoGenerateColumns="False" x:Name="Passanger_DataGrid"  ColumnWidth="SizeToCells">
+                <DataGrid.Columns>
+                    <DataGridTextColumn   Header="Id" Binding="{Binding IdTicketSelling}"/>
+                    <DataGridTextColumn  Header="IdFlight" Binding="{Binding IdFlight}"/>
+                    <DataGridTextColumn   Header="NumberTicket" Binding="{Binding NumberTicket}"/>
+                    <DataGridTextColumn  Header="PassportNumber" Binding="{Binding PassportNumber}"/>
+                    <DataGridTextColumn  Header="PlaceOfIssue" Binding="{Binding PlaceOfIssue}"/>
+                    <DataGridTextColumn  Header="DateOfIssue" Binding="{Binding DateOfIssue}"/>
+                    <DataGridTextColumn  Header="FirstName" Binding="{Binding FirstName}"/>
+                    <DataGridTextColumn  Header="SecondName" Binding="{Binding SecondName}"/>
+                    <DataGridTextColumn  Header="Surname" Binding="{Binding Surname}"/>
+                    <DataGridTextColumn  Header="DateOfBirth" Binding="{Binding DateOfBirth}"/>
+                    <DataGridTextColumn  Header="Email" Binding="{Binding Email}"/>
+                    <DataGridTemplateColumn Header="Action">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="DeletePassanger" 
+                                Style="{StaticResource InfoButtonStyle}" 
+                                        x:Name="DeletePassanger"
+                                Click="DeletePassanger_Click" 
+                                 />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Row="1" HorizontalAlignment="Center">
+        <Button x:Name="ClearSearh_Button"  Content="Clear Searh" Style="{StaticResource ButtonUnder}" Width="251" Height="85" HorizontalAlignment="Left" Click="ClearSearh_Button_Click" />
+    </Grid>
+    </Grid>
+</Page>
