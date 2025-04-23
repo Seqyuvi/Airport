@@ -30,6 +30,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <xctk:WatermarkTextBox x:Name="FlightInformation_TextBox"
+                                   VerticalContentAlignment="Center" 
+                                   FontSize="45"
                      Watermark="Enter Flight Information"
                     
                      Width="854" Height="115"/>
@@ -38,17 +40,23 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <RadioButton Grid.Row="0" GroupName="FindType_Flight_RadioButton"
+                <Viewbox Height="50">
+                    <RadioButton  Grid.Row="0" GroupName="FindType_Flight_RadioButton"
                              x:Name="NumberFlights_RadioButton"
-                             Content="Number Flights"
-                             FontSize="45"
+                             Content="Number flight"
+                             
                              HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    
+                </Viewbox>
+                <Viewbox Height="50" Grid.Row="1">
                 <RadioButton Grid.Row="1" GroupName="FindType_Flight_RadioButton"
                              Content="Airport Title"
                              x:Name="AirportTitle_RadioButton"
-                             FontSize="45"
+                             
                              HorizontalAlignment="Center" VerticalAlignment="Center"
                              />
+                    
+                </Viewbox>
             </Grid>
         </Grid>
         <Button Grid.Row="2" x:Name="Find_Button" Style="{StaticResource ButtonUnder}" Click="Find_Button_Click" Content="Find" FontSize="50" Width="205" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center"/>

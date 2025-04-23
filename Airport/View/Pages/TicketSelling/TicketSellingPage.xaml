@@ -48,23 +48,23 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <xctk:WatermarkTextBox
-     Watermark="NNNN-NNNNNN"
-     Grid.Row="0" Width="500" Height="70" x:Name="Passport_TextBox"/>
+     Watermark="NNNN-NNNNNN" VerticalContentAlignment="Center"
+     Grid.Row="0" Width="500" Height="70" x:Name="Passport_TextBox" TextChanged="Passport_TextBox_TextChanged"/>
                 <xctk:WatermarkTextBox
-Watermark="Palce of passport issue"
+Watermark="Palce of passport issue" VerticalContentAlignment="Center"
 Grid.Row="1" Width="500" Height="70" x:Name="PlaceOfissuePassport_TextBox"/>
                 <xctk:DateTimePicker 
-Watermark="Passport issue date"
+Watermark="Passport issue date" VerticalContentAlignment="Center"
 Grid.Row="2" Width="500" Height="70" Format="ShortDate" x:Name="PassportIssueDate_DatePicker"/>
                 <xctk:WatermarkTextBox 
-Watermark="Last name Frist name Patronymic"
+Watermark="First Name, Last Name, Middle Name (optional)" VerticalContentAlignment="Center"
 Grid.Row="3" Width="500" Height="70" x:Name="FIO_TextBox"/>
-                <xctk:DateTimePicker 
+                <xctk:DateTimePicker  VerticalContentAlignment="Center"
                     Watermark="DateOfBirth"
         Grid.Row="4" Width="500" Height="70" x:Name="DateOfBirth_DatePicker" Format="ShortDate"
        />
                 <xctk:WatermarkTextBox 
-Watermark="Email"
+Watermark="Email" VerticalContentAlignment="Center"
 Grid.Row="5" Width="500" Height="70" x:Name="Email_TextBox"/>
             </Grid>
             <Grid Grid.Column="1">

@@ -84,39 +84,52 @@ namespace Airport.View.Pages.TicketSelling
         {
             if (Validate())
             {
-                var FIO = FIO_TextBox.Text.Trim() + " User" + " User";
-                var resultAdd = _ticketSellingController.TicketAddCart(
-                    FlightHelper.idFlight,
-                    Passport_TextBox.Text,
-                    PlaceOfissuePassport_TextBox.Text,
-                    new DateTime(Convert.ToInt32(PassportIssueDate_DatePicker.Text.Split('.')[2]), Convert.ToInt32(PassportIssueDate_DatePicker.Text.Split('.')[1]), Convert.ToInt32(PassportIssueDate_DatePicker.Text.Split('.')[0])),
-                    FIO.Split()[0] == "User" ? "" : FIO.Split()[0],
-                    FIO.Split()[1] == "User" ? "" : FIO.Split()[1],
-                    FIO.Split()[2] == "User" ? "" : FIO.Split()[2],
-                    new DateTime(Convert.ToInt32(DateOfBirth_DatePicker.Text.Split('.')[2]), Convert.ToInt32(PassportIssueDate_DatePicker.Text.Split('.')[1]), Convert.ToInt32(DateOfBirth_DatePicker.Text.Split('.')[0])),
-                    1,
-                    Email_TextBox.Text,
-                    1
-                    );
-
-                if (resultAdd == true)
+                if(_moreInformationFlightController.GetMore(FlightHelper.idFlight).TotalSeatsFree > 0)
                 {
-                    var result = System.Windows.MessageBox.Show("Успешно зарегистрирован, вернуться обратно?", "Переход", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                    if (result == MessageBoxResult.Yes)
+                    var FIO = FIO_TextBox.Text.Trim() + " User" + " User";
+                    var resultAdd = _ticketSellingController.TicketAddCart(
+                        FlightHelper.idFlight,
+                        Passport_TextBox.Text,
+                        PlaceOfissuePassport_TextBox.Text,
+                        new DateTime(Convert.ToInt32(PassportIssueDate_DatePicker.Text.Split('.')[2]), Convert.ToInt32(PassportIssueDate_DatePicker.Text.Split('.')[1]), Convert.ToInt32(PassportIssueDate_DatePicker.Text.Split('.')[0])),
+                        FIO.Split()[0] == "User" ? "" : FIO.Split()[0],
+                        FIO.Split()[1] == "User" ? "" : FIO.Split()[1],
+                        FIO.Split()[2] == "User" ? "" : FIO.Split()[2],
+                        new DateTime(Convert.ToInt32(DateOfBirth_DatePicker.Text.Split('.')[2]), Convert.ToInt32(PassportIssueDate_DatePicker.Text.Split('.')[1]), Convert.ToInt32(DateOfBirth_DatePicker.Text.Split('.')[0])),
+                        1,
+                        Email_TextBox.Text,
+                        1
+                        );
+
+                    if (resultAdd == true)
                     {
-                        this.NavigationService.Navigate(new AllFlightsPage());
-                    }
-                    else
-                    {
-                        this.NavigationService.Navigate(new TicketSellingPage());
+                        var result = System.Windows.MessageBox.Show("Успешно зарегистрирован, вернуться обратно?", "Переход", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            this.NavigationService.Navigate(new AllFlightsPage());
+                        }
+                        else
+                        {
+                            this.NavigationService.Navigate(new TicketSellingPage());
+                        }
                     }
                 }
+                else
+                {
+                    System.Windows.MessageBox.Show("На рейсе закончились места", "Переход", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                
             }
         }
 
         private void AllTicket_Button_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new PassangerListPage());
+        }
+
+		private void Passport_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+		{
+
         }
     }
 }

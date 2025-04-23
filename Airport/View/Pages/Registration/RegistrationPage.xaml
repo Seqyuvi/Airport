@@ -50,19 +50,20 @@
                 </Grid.RowDefinitions>
                 <xctk:WatermarkTextBox
      Watermark="NNNN-NNNNNN"
+                    VerticalContentAlignment="Center"
                     x:Name="PassportNumber_TextBox"
      Grid.Row="0"  Width="500" Height="70"/>
                 <xctk:WatermarkTextBox
-Watermark="Palce of passport issue" x:Name="PlacePassport_TextBox"
+Watermark="Palce of passport issue" x:Name="PlacePassport_TextBox" VerticalContentAlignment="Center"
 Grid.Row="1"  Width="500" Height="70"/>
                 <xctk:DateTimePicker
-Watermark="Passport issue date" x:Name="PassportDate_TextBox" Format="ShortDate"
+Watermark="Passport issue date" x:Name="PassportDate_TextBox" Format="ShortDate" VerticalContentAlignment="Center"
 Grid.Row="2"  Width="500" Height="70"/>
                 <xctk:WatermarkTextBox
-Watermark="Last name Frist name Patronymic" x:Name="FIO_TextBox"
+Watermark="First Name, Last Name, Middle Name (optional)c" x:Name="FIO_TextBox" VerticalContentAlignment="Center"
 Grid.Row="3"  Width="500" Height="70"/>
                 <xctk:DateTimePicker 
-                    Watermark="DateOfBirth" x:Name="DateOfBirth_DatePciker"
+                    Watermark="DateOfBirth" x:Name="DateOfBirth_DatePciker" VerticalContentAlignment="Center"
         Grid.Row="4"  Width="500" Height="70" Format="ShortDate"
         />
                 <Grid Grid.Row="5">
@@ -72,11 +73,11 @@ Grid.Row="3"  Width="500" Height="70"/>
                     </Grid.ColumnDefinitions>
                     <xctk:WatermarkTextBox
                                 Watermark="BagageCount"
-Grid.Column="0"  Width="350" Height="70" x:Name="BagageCount_TextBox"
+Grid.Column="0"  Width="350" Height="70" x:Name="BagageCount_TextBox" VerticalContentAlignment="Center"
                     />
                     <xctk:WatermarkTextBox
                                 Watermark="BagageWeight"
-Grid.Column="1"  Width="350" Height="70" x:Name="BagageWeight_TextBox"
+Grid.Column="1"  Width="350" Height="70" x:Name="BagageWeight_TextBox" VerticalContentAlignment="Center"
                     />
                 </Grid>
                 

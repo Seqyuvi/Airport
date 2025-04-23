@@ -24,11 +24,11 @@
         </Grid.RowDefinitions>
         <xctk:WatermarkComboBox  
             Watermark="Airline"
-     
+        VerticalContentAlignment="Center"
       Grid.Row="0" Width="500" Height="70" x:Name="Airline_ComboBox"/>
         <xctk:WatermarkComboBox  
 Watermark="Airplane"
-Grid.Row="1" Width="500" Height="70" x:Name="Airplane_ComboBox"/>
+Grid.Row="1" Width="500" Height="70" VerticalContentAlignment="Center" x:Name="Airplane_ComboBox"/>
         <Button x:Name="Apply_Button" Style="{StaticResource ButtonUnder}" Grid.Row="4" Content="Apply" Width="300" Height="100" Click="Apply_Button_Click"/>
     </Grid>
 </Page>

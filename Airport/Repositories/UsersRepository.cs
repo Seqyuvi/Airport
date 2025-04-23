@@ -18,7 +18,7 @@ namespace Airport.Repositories
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public  List<User> GetAll()
+        public virtual List<User> GetAll()
         {
             try
             {

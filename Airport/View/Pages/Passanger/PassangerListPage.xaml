@@ -29,11 +29,11 @@
                     <DataGridTextColumn   Header="NumberTicket" Binding="{Binding NumberTicket}"/>
                     <DataGridTextColumn  Header="PassportNumber" Binding="{Binding PassportNumber}"/>
                     <DataGridTextColumn  Header="PlaceOfIssue" Binding="{Binding PlaceOfIssue}"/>
-                    <DataGridTextColumn  Header="DateOfIssue" Binding="{Binding DateOfIssue}"/>
+                    <DataGridTextColumn  Header="DateOfIssue" Binding="{Binding DateOfIssue, StringFormat=yyyy/MM/dd}"/>
                     <DataGridTextColumn  Header="FirstName" Binding="{Binding FirstName}"/>
                     <DataGridTextColumn  Header="SecondName" Binding="{Binding SecondName}"/>
                     <DataGridTextColumn  Header="Surname" Binding="{Binding Surname}"/>
-                    <DataGridTextColumn  Header="DateOfBirth" Binding="{Binding DateOfBirth}"/>
+                    <DataGridTextColumn  Header="DateOfBirth" Binding="{Binding DateOfBirth, StringFormat=yyyy/MM/dd}"/>
                     <DataGridTextColumn  Header="Email" Binding="{Binding Email}"/>
                     <DataGridTemplateColumn Header="Action">
                         <DataGridTemplateColumn.CellTemplate>

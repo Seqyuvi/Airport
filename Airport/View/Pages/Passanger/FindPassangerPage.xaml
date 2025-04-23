@@ -30,25 +30,32 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <xctk:WatermarkTextBox x:Name="FlightInformation_TextBox"
-                 Watermark="Enter Flight Information"
-                
+                 Watermark="Enter Passanger Information"
+                VerticalContentAlignment="Center" 
+FontSize="45"
                  Width="854" Height="115"/>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <RadioButton Grid.Row="0" GroupName="FindType_Passanger_RadioButton"
-                         Content="Passport"
-                             x:Name="Passport_RadioButton"
-                         FontSize="45"
-                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <RadioButton Grid.Row="1" GroupName="FindType_Passanger_RadioButton"
-                         Content="Fio"
-                             x:Name="Fio_RadioButton"
-                         FontSize="45"
-                         HorizontalAlignment="Center" VerticalAlignment="Center"
-                         />
+                <Viewbox Height="50">
+                    <RadioButton Grid.Row="0" GroupName="FindType_Passanger_RadioButton"
+         Content="Passport"
+             x:Name="Passport_RadioButton"
+         
+         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Viewbox>
+                <Viewbox Height="50" Grid.Row="1">
+                    <RadioButton Grid.Row="1" GroupName="FindType_Passanger_RadioButton"
+         Content="Name"
+             x:Name="Fio_RadioButton"
+         
+         HorizontalAlignment="Center" VerticalAlignment="Center"
+         />
+                </Viewbox>
+                
+                
             </Grid>
         </Grid>
         <Button Grid.Row="2" Content="Find" x:Name="Find_Button" Style="{StaticResource ButtonUnder}" Click="Find_Button_Click" FontSize="50" Width="205" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center"/>

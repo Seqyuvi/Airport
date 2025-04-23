@@ -16,7 +16,9 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Width="410" Height="135" Style="{StaticResource ButtonUnder}" Content="Change FlightNumber/Status/Gate" FontSize="36" x:Name="Update_Button_1" Click="Update_Button_1_Click"/>
+        <Button Grid.Row="0" Width="410" Height="135" Style="{StaticResource ButtonUnder}"   x:Name="Update_Button_1" Click="Update_Button_1_Click">
+            <TextBlock Text="Change FlightNumber/Status/Gate" TextWrapping="Wrap" TextAlignment="Center" FontSize="36"></TextBlock> 
+        </Button>
         <Button Grid.Row="1" Width="410" Height="135" Style="{StaticResource ButtonUnder}" Content="Change Data/Time" FontSize="36" x:Name="Update_Button_2" Click="Update_Button_2_Click"/>
         <Button Grid.Row="2" Width="410" Height="135" Style="{StaticResource ButtonUnder}" Content="Change Airline/Airplane" FontSize="36" x:Name="Update_Button_3" Click="Update_Button_3_Click"/>
         <Button Grid.Row="3" Width="410" Height="135" Style="{StaticResource ButtonUnder}" Content="Change City/Airport" FontSize="36" x:Name="Update_Button_4" Click="Update_Button_4_Click"/>

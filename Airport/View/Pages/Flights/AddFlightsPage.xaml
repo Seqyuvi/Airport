@@ -26,6 +26,7 @@
 
         <!-- AAA-NNN -->
         <xctk:WatermarkTextBox 
+            VerticalContentAlignment="Center"
             Grid.Row="0" Grid.Column="0" 
             Watermark="AAA-NNN" Height="60" Width="500"
             x:Name="FlightNumber_TextBox"
@@ -34,7 +35,7 @@
 
         <!-- AirLine -->
         <xctk:WatermarkComboBox 
-            IsEditable="True"
+            IsEditable="True" VerticalContentAlignment="Center"
             Grid.Row="1" Grid.Column="0" 
             Watermark="AirLine" Height="60" Width="500"
             x:Name="Airline_ComboBox"
@@ -43,7 +44,7 @@
         <!-- Airport Departure -->
         <xctk:WatermarkComboBox 
             IsEditable="True"
-            
+            VerticalContentAlignment="Center"
             Grid.Row="2" Grid.Column="0" 
             Watermark="Airport Departure" Height="60" Width="500"
             x:Name="DepartureAirprot_ComboBox"/>
@@ -51,7 +52,7 @@
         <!-- Airport Arrival -->
         <xctk:WatermarkComboBox 
             IsEditable="True"
-            
+            VerticalContentAlignment="Center"
             Grid.Row="3" Grid.Column="0" 
             Watermark="Airport Arrival" Height="60" Width="500"
             x:Name="ArrivalAirport_ComboBox"/>
@@ -59,7 +60,7 @@
         <!-- Airplane -->
         <xctk:WatermarkComboBox 
             IsEditable="True"
-            
+            VerticalContentAlignment="Center"
             Grid.Row="1" Grid.Column="1" 
             Watermark="Airplane" Height="60" Width="500"
             x:Name="Airplane_ComboBox"
@@ -71,11 +72,13 @@
             Watermark="Total Seats Free" Height="60" Width="500"
             x:Name="TotalSeatsFree_TextBox"
             IsReadOnly="True"
+            VerticalContentAlignment="Center"
             />
 
         <!-- ArrivalDate -->
         <xctk:DateTimePicker 
             Grid.Row="0" Grid.Column="2" 
+            
             Watermark="ArrivalDate"
             Format="ShortDate" Height="60" Width="500"
             x:Name="ArrivalDate_DatePicker"/>

@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical" Background="#D9D9D9">
             <Image Source="Assets/Images/Logo.png" Width="198" Height="68" VerticalAlignment="Bottom"></Image>
-            <Menu Margin="0 125 0 0" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Menu Margin="0 300 0 0" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <MenuItem Header="Flights" Height="63" Width="173" >
                     <MenuItem Header="All Flights" x:Name="AllFlights_MenuItem" Click="AllFlights_MenuItem_Click"></MenuItem>
                     <MenuItem Header="Find Flight" x:Name="FindFlights_MenuItem" Click="FindFlights_MenuItem_Click"></MenuItem>
@@ -41,6 +41,7 @@
                     <MenuItem Header="All Registration" Click="AllRegistration_Click"></MenuItem>
                 </MenuItem>
             </Menu>
+            <Button Style="{StaticResource ButtonUnder}"  x:Name="Back_Button" Width="150" Height="50" Content="Back" Margin="0 250 0 0" Click="Back_Button_Click"></Button>
         </StackPanel>
 
         <Frame x:Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>

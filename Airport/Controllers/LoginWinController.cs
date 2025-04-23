@@ -13,12 +13,19 @@ namespace Airport.Controllers
         {
             _usersRepository = new UsersRepository();
         }
-
+        /// <summary>
+        /// Конструктор для тестов
+        /// </summary>
+        /// <param name="usersRepository"></param>
+        public LoginWinController(UsersRepository usersRepository)
+        {
+            _usersRepository = usersRepository;
+        }
         /// <summary>
         /// Бизнес-логика авторизации диспетчера аэропрта
         /// </summary>
         /// <param name="login"></param>
-        /// <param name="Password"></param>
+        /// <param name="password"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
         public bool Authorization(string login, string password)

@@ -29,6 +29,7 @@ namespace Airport
         {
             InitializeComponent();
             MainFrame.Navigate(new MainPage());
+            
         }
 
         private void AllFlights_MenuItem_Click(object sender, RoutedEventArgs e)
@@ -65,5 +66,16 @@ namespace Airport
         {
             MainFrame.Navigate(new PassangerListPage());
         }
-    }
+
+		private void Back_Button_Click(object sender, RoutedEventArgs e)
+		{
+            
+            if(MainFrame.CanGoBack)
+            {
+				MainFrame.GoBack();
+			}
+        }
+
+		
+	}
 }
