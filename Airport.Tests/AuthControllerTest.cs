@@ -24,23 +24,12 @@ namespace Airport.Tests
         [DataRow("admin", "dwdwa", false)]
         public void Authorization_DataTest(string login, string password, bool expected)
         {
-            // Arrange
-            var mockUsers = new List<User>
-            {
-                new User { Login = "admin", Password = "password123" }
-            };
-
-            var mockRepo = new Mock<UsersRepository>();
-            mockRepo.Setup(repo => repo.GetAll()).Returns(mockUsers);
-
-            var controller = new LoginWinController(mockRepo.Object);
-
-            // Act
+            var controller = new LoginWinController();
             var actual = controller.Authorization(login, password);
-
-            // Assert
             Assert.AreEqual(expected, actual);
         }
+
+        
 
     }
 }

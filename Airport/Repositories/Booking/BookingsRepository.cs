@@ -27,9 +27,18 @@ namespace Airport.Repositories.Booking
         {
             try
             {
+                var count = _db.context.Bookings.ToList().Count();
                 _db.context.Bookings.Add(booking);
                 _db.context.SaveChanges();
-                return true;
+                if(count < _db.context.Bookings.Count())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+				}
+                
 
             }
             catch (Exception ex)

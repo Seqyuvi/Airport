@@ -47,6 +47,7 @@ namespace Airport.Controllers.Flights
         public bool AddFlight(string flightNumber, string airline, string airportArrival, string airportDeparture, DateTime departureDate, DateTime arrivalDate, 
             TimeSpan departureTime, TimeSpan arrivalTime, int TotalSeatsFree, string airplane, int Gate = 1, int Status = 1)
         {
+            bool succsess = true;
             try
             {
                 bool result = _flightsRepository.Create(new Models.Flights
@@ -79,9 +80,10 @@ namespace Airport.Controllers.Flights
                         button: MessageBoxButton.OK,
                         icon: MessageBoxImage.Error);
                 });
-                throw new Exception($"Ошибка добавленяи рейса: {ex.Message}");
-            }
-            
+                succsess = false;
+				
+			}
+            return succsess;
         }
 
         

@@ -20,7 +20,6 @@ namespace Airport.Controllers.Airline
         {
             try
             {
-
                 return _airlineRepository.GetAll();
             }
             catch (Exception ex)

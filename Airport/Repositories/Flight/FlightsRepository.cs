@@ -80,7 +80,7 @@ namespace Airport.Repositories.Flight
                 int countFlight = _db.context.Flights.ToList().Count();
                 _db.context.Flights.Remove(_db.context.Flights.FirstOrDefault(x => x.IdFlight == id));
                 _db.context.SaveChanges();
-                if (countFlight <= _db.context.Flights.ToList().Count())
+                if (countFlight < _db.context.Flights.ToList().Count())
                 {
                     return true;
                 }

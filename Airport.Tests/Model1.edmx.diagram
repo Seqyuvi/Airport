@@ -4,21 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0094d29270304ea79c5114801b2ea638" Name="Diagram1">
-        <EntityTypeShape EntityType="AirportModel.Airlines" Width="1.5" PointX="0.75" PointY="18.125" />
-        <EntityTypeShape EntityType="AirportModel.Airplane" Width="1.5" PointX="0.75" PointY="7.5" />
+      <Diagram DiagramId="7f1432d5a9a047ee975614fa39baddbe" Name="Diagram1">
+        <EntityTypeShape EntityType="AirportModel.Airlines" Width="1.5" PointX="0.75" PointY="7.5" />
+        <EntityTypeShape EntityType="AirportModel.Airplane" Width="1.5" PointX="0.75" PointY="12.375" />
         <EntityTypeShape EntityType="AirportModel.Airports" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="AirportModel.Bagage" Width="1.5" PointX="5.25" PointY="11.625" />
-        <EntityTypeShape EntityType="AirportModel.Bookings" Width="1.5" PointX="5.25" PointY="15.75" />
-        <EntityTypeShape EntityType="AirportModel.BookingsStatus" Width="1.5" PointX="3" PointY="16.125" />
+        <EntityTypeShape EntityType="AirportModel.Bagage" Width="1.5" PointX="5.25" PointY="8.5" />
+        <EntityTypeShape EntityType="AirportModel.Bookings" Width="1.5" PointX="5.25" PointY="13.75" />
+        <EntityTypeShape EntityType="AirportModel.BookingsStatus" Width="1.5" PointX="3" PointY="14.125" />
         <EntityTypeShape EntityType="AirportModel.BookingTickets" Width="1.5" PointX="7.5" PointY="4" />
         <EntityTypeShape EntityType="AirportModel.Flights" Width="1.5" PointX="3" PointY="2.5" />
         <EntityTypeShape EntityType="AirportModel.FormOfPayments" Width="1.5" PointX="3" PointY="9.125" />
-        <EntityTypeShape EntityType="AirportModel.Gates" Width="1.5" PointX="0.75" PointY="10" />
+        <EntityTypeShape EntityType="AirportModel.Gates" Width="1.5" PointX="0.75" PointY="14.875" />
         <EntityTypeShape EntityType="AirportModel.Registration" Width="1.5" PointX="7.5" PointY="0.75" />
-        <EntityTypeShape EntityType="AirportModel.Status" Width="1.5" PointX="0.75" PointY="15.75" />
-        <EntityTypeShape EntityType="AirportModel.StatusGate" Width="1.5" PointX="1.5" PointY="13.25" />
-        <EntityTypeShape EntityType="AirportModel.StatusRegistration" Width="1.5" PointX="5.25" PointY="9.25" />
+        <EntityTypeShape EntityType="AirportModel.Status" Width="1.5" PointX="0.75" PointY="10" />
+        <EntityTypeShape EntityType="AirportModel.StatusGate" Width="1.5" PointX="1.5" PointY="18.125" />
+        <EntityTypeShape EntityType="AirportModel.StatusRegistration" Width="1.5" PointX="5.25" PointY="11" />
         <EntityTypeShape EntityType="AirportModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="7" />
         <EntityTypeShape EntityType="AirportModel.TicketsSelling" Width="1.5" PointX="5.25" PointY="2.75" />
         <EntityTypeShape EntityType="AirportModel.User" Width="1.5" PointX="7.75" PointY="10" />
