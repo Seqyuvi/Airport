@@ -127,9 +127,6 @@ namespace Airport.View.Pages.TicketSelling
             this.NavigationService.Navigate(new PassangerListPage());
         }
 
-		private void Passport_TextBox_TextChanged(object sender, TextChangedEventArgs e)
-		{
-
-        }
+		
     }
 }

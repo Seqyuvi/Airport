@@ -19,7 +19,11 @@ namespace Airport.Controllers.Ticket
         {
             try
             {
-                return _ticketSellingRepository.FindPassanger(type, info);
+                if(type == 1 && type == 2)
+                {
+					return _ticketSellingRepository.FindPassanger(type, info);
+				}
+                return new List<Models.TicketsSelling>();
 
             }
             catch (Exception ex)

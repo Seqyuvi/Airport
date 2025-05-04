@@ -182,9 +182,6 @@
     <Compile Include="Models\StatusRegistration.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TicketsSelling.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

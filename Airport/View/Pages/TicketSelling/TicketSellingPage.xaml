@@ -49,7 +49,7 @@
                 </Grid.RowDefinitions>
                 <xctk:WatermarkTextBox
      Watermark="NNNN-NNNNNN" VerticalContentAlignment="Center"
-     Grid.Row="0" Width="500" Height="70" x:Name="Passport_TextBox" TextChanged="Passport_TextBox_TextChanged"/>
+     Grid.Row="0" Width="500" Height="70" x:Name="Passport_TextBox" />
                 <xctk:WatermarkTextBox
 Watermark="Palce of passport issue" VerticalContentAlignment="Center"
 Grid.Row="1" Width="500" Height="70" x:Name="PlaceOfissuePassport_TextBox"/>

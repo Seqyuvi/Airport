@@ -34,14 +34,11 @@ namespace Airport.Controllers.Ticket
         {
             try
             {
-                TicketPrintWord(model);
+                //TicketPrintWord(model);
                 _ticketSellingRepository.Create
                     (
                        model
                     );
-                
-                
-                
                 var result = _bookingTicketsController.TicketPlusBooking(model.IdTicketSelling);
                 
                 if (result) return true; else return false;
@@ -61,60 +58,7 @@ namespace Airport.Controllers.Ticket
             }
         }
 
-        private void SendEmailWithAttachment(string recipientEmail, string documentPath)
-        {
-            try
-            {
-                
-                string smtpServer = "smtp.gmail.com"; 
-                int smtpPort = 587; 
-
-                
-                string senderEmail = "airportsystemchik@gmail.com";
-                string senderPassword = "airport123@";
-
-                
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress(senderEmail);
-                mail.To.Add(recipientEmail);
-                mail.Subject = "Выписка билета";
-                mail.Body = "Здравствуйте! Высылаю вам выписку билета во вложении.";
-
-                
-                Attachment attachment = new Attachment(documentPath);
-                mail.Attachments.Add(attachment);
-
-                
-                SmtpClient smtpClient = new SmtpClient(smtpServer)
-                {
-                    Port = smtpPort,
-                    Credentials = new NetworkCredential(senderEmail, senderPassword),
-                    EnableSsl = true
-                };
-                
-                
-                
-                smtpClient.Send(mail);
-
-                
-                attachment.Dispose();
-                mail.Dispose();
-
-                
-            }
-            catch (Exception ex)
-            {
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    MessageBox.Show(
-                        messageBoxText: $"Ошибка отправки билета: {ex.Message}",
-                        caption: "Ошибка",
-                        button: MessageBoxButton.OK,
-                        icon: MessageBoxImage.Error);
-                });
-                
-            }
-        }
+       
 
         private bool TicketPrintWord( TicketsSelling model)
         {
@@ -176,11 +120,7 @@ namespace Airport.Controllers.Ticket
         {
             try
             {
-               
                 return _ticketSellingRepository.GetAll().Last();
-
-
-
             }
             catch (Exception ex)
             {
@@ -201,7 +141,9 @@ namespace Airport.Controllers.Ticket
         {
             try
             {
-                var lastTicket = GetLastTicket();
+                var count = TickerSellingCartServiceHelper.ListTicket.Count();
+
+				var lastTicket = GetLastTicket();
                 TickerSellingCartServiceHelper.ListTicket.Add
                     (
                         new Models.TicketsSelling
@@ -224,7 +166,7 @@ namespace Airport.Controllers.Ticket
 
 
                  var result = _flightsRepository.UpdateTotalSeatsFree(idFlight);
-                if (result) return true; else return false;
+                if (result && count < TickerSellingCartServiceHelper.ListTicket.Count()) return true; else return false;
 
             }
             catch (Exception ex)

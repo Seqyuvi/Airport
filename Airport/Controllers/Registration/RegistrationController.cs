@@ -22,7 +22,7 @@ namespace Airport.Controllers.Registration
         }
 
         public bool IsRegistered(int idFlight, string passportNumber, string placeOfIssue, DateTime dateOfIssue,
-            string firstName, string secondName, string surName, DateTime dateOfBirth, int countBagage, int weightBagage)
+            string firstName, string secondName, string surName, DateTime dateOfBirth, int countBagage = 0, int weightBagage = 0)
         {
             try
             {
@@ -30,7 +30,9 @@ namespace Airport.Controllers.Registration
                 && x.PassportNumber == passportNumber
                 && x.FirstName == firstName
                 && x.SecondName == secondName
+                && x.Surname == surName
                 && x.DateOfBirth == dateOfBirth
+                && x.PlaceOfIssue == placeOfIssue
                 );
             
                 if(ticket != null)

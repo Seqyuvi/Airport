@@ -60,8 +60,6 @@ public partial class AirportEntities : DbContext
 
     public virtual DbSet<StatusRegistration> StatusRegistration { get; set; }
 
-    public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-
     public virtual DbSet<TicketsSelling> TicketsSelling { get; set; }
 
     public virtual DbSet<User> User { get; set; }

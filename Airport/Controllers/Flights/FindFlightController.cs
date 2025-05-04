@@ -21,7 +21,12 @@ namespace Airport.Controllers.Flights
         {
             try
             {
-                return _flightsRepository.GetFligthFind(type, info);
+                if(type == 1 || type == 2)
+                {
+					return _flightsRepository.GetFligthFind(type, info);
+				}
+                return new List<Models.Flights>();
+                
             }
             catch(Exception ex)
             {

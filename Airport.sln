@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Airport", "Airport\Airport.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Airport.Tests", "Airport.Tests\Airport.Tests.csproj", "{26ADE8C1-FF65-43BD-A3FD-A53FBB19045E}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupProject", "SetupProject\SetupProject.vdproj", "{5A47ACD0-B1E8-4B50-B2B1-83D6857F5098}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,8 @@ Global
 		{26ADE8C1-FF65-43BD-A3FD-A53FBB19045E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26ADE8C1-FF65-43BD-A3FD-A53FBB19045E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26ADE8C1-FF65-43BD-A3FD-A53FBB19045E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A47ACD0-B1E8-4B50-B2B1-83D6857F5098}.Debug|Any CPU.ActiveCfg = Debug
+		{5A47ACD0-B1E8-4B50-B2B1-83D6857F5098}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

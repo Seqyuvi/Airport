@@ -66,8 +66,8 @@ namespace Airport.Controllers.Ticket
 
         public bool Delete(int id)
         {
+			return _ticketSellingRepository.Delete(id);
 
-            return _ticketSellingRepository.Delete(id);
-        }
+		}
     }
 }

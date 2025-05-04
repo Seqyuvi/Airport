@@ -50,24 +50,32 @@ namespace Airport.Controllers.Flights
             bool succsess = true;
             try
             {
-                bool result = _flightsRepository.Create(new Models.Flights
+                if(_db.context.Airlines.FirstOrDefault(x => x.TitleAirlane == airline) != null &&
+                    _airportsRepository.GetAll().FirstOrDefault(x => x.CodeIATA == airportDeparture) != null &&
+					_airportsRepository.GetAll().FirstOrDefault(x => x.CodeIATA == airportArrival) != null &&
+					_db.context.Airplane.FirstOrDefault(x => x.TitleAirplane == airplane) != null)
                 {
-                    FlightNumber = flightNumber,
-                    IdAirlane = _db.context.Airlines.FirstOrDefault(x => x.TitleAirlane == airline).IdAirline,
-                    AirportDeparturesId = _airportsRepository.GetAll().FirstOrDefault(x => x.CodeIATA == airportDeparture).IdAirport,
-                    ArrivalAirportId = _airportsRepository.GetAll().FirstOrDefault(x => x.CodeIATA == airportArrival).IdAirport,
-                    DepartureDate = departureDate,
-                    DepartureTime = departureTime,
-                    ArrivalTime = arrivalTime,
-                    ArrivalDate = arrivalDate,
-                    TotalSeatsFree = TotalSeatsFree,
-                    IdStatus = Status,
-                    IdAirplane = _db.context.Airplane.FirstOrDefault(x => x.TitleAirplane == airplane).IdAirplane,
-                    IdGate = Gate,
+                    bool result = _flightsRepository.Create(new Models.Flights
+                    {
+                        FlightNumber = flightNumber,
+                        IdAirlane = _db.context.Airlines.FirstOrDefault(x => x.TitleAirlane == airline).IdAirline,
+                        AirportDeparturesId = _airportsRepository.GetAll().FirstOrDefault(x => x.CodeIATA == airportDeparture).IdAirport,
+                        ArrivalAirportId = _airportsRepository.GetAll().FirstOrDefault(x => x.CodeIATA == airportArrival).IdAirport,
+                        DepartureDate = departureDate,
+                        DepartureTime = departureTime,
+                        ArrivalTime = arrivalTime,
+                        ArrivalDate = arrivalDate,
+                        TotalSeatsFree = TotalSeatsFree,
+                        IdStatus = Status,
+                        IdAirplane = _db.context.Airplane.FirstOrDefault(x => x.TitleAirplane == airplane).IdAirplane,
+                        IdGate = Gate,
 
-                });
+                    });
+					if (result) return true; else return false;
 
-                if (result) return true; else return false;
+				}
+                return false;
+                
                 
             }
             catch(Exception ex)

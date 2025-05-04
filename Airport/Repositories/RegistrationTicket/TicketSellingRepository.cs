@@ -19,9 +19,11 @@ namespace Airport.Repositories.RegistrationTicket
         {
             try
             {
+                var count = _db.context.TicketsSelling.ToList().Count();
                 _db.context.TicketsSelling.Add(tickets);
                 _db.context.SaveChanges();
-                return true;
+                if (count < _db.context.TicketsSelling.ToList().Count()) return true; else return false;
+                
 
             }
             catch (Exception ex)
@@ -42,10 +44,19 @@ namespace Airport.Repositories.RegistrationTicket
         {
             try
             {
-                var item = _db.context.TicketsSelling.FirstOrDefault(x => x.IdTicketSelling == numberTicket);
-                _db.context.TicketsSelling.Remove(item);
-                _db.context.SaveChanges();
-                return true;
+                var count = _db.context.TicketsSelling.ToList().Count();
+
+				var item = _db.context.TicketsSelling.FirstOrDefault(x => x.IdTicketSelling == numberTicket);
+                if (item != null)
+                {
+                    _db.context.TicketsSelling.Remove(item);
+                    _db.context.SaveChanges();
+                }
+                else return false;
+                
+                if (count > _db.context.TicketsSelling.ToList().Count()) return true; else return false;
+                
+                
 
             }
             catch (Exception ex)

@@ -8,6 +8,22 @@ namespace Airport.Tests.Flight
 	[TestClass]
 	public class AddFlightControllerTest
 	{
+		/// <summary>
+		/// Тестирование добавления рейса в базу данных
+		/// </summary>
+		/// <param name="flightNumber"></param>
+		/// <param name="airline"></param>
+		/// <param name="airportArrival"></param>
+		/// <param name="airportDeparture"></param>
+		/// <param name="departureDate"></param>
+		/// <param name="arrivalDate"></param>
+		/// <param name="departureTime"></param>
+		/// <param name="arrivalTime"></param>
+		/// <param name="TotalSeatsFree"></param>
+		/// <param name="airplane"></param>
+		/// <param name="expected"></param>
+		/// <param name="Gate"></param>
+		/// <param name="Status"></param>
 		[DataTestMethod]
 		[DataRow("SU-100", "Aeroflot", "SVO", "IST", "2024.12.5", "2025.12.5", "12:05:00", "12:10:00", 189, "Boeing 737", true)]
 		[DataRow("SU-100", "Aeroflot", "SVO", "IdwST", "2024.12.5", "2025.12.5", "12:05:00", "12:10:00", 189, "Boeing 737", false)]

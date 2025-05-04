@@ -81,10 +81,12 @@ namespace Airport.Repositories.RegistrationTicket
         {
             try
             {
+                
                 var item = _db.context.Registration.FirstOrDefault(x => x.IdRegistration == idRegistration);
                 item.IdStatusRegistration = 4;
                 _db.context.SaveChanges();
-                return true;
+                if (_db.context.Registration.FirstOrDefault(x => x.IdRegistration == idRegistration).IdStatusRegistration == 4) return true; else return false;
+                
 
             }
             catch (Exception ex)
